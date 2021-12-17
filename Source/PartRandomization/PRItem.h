@@ -1,5 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+//Next step is to reference the data asset and each part and to generate them.
+//This being said, I should redo the loot pool in C++ and I will the be able to
+//Generate everything in code.
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -34,12 +38,18 @@ public:
 	UPRGunParts* GunParts;
 
 public:
-	UFUNCTION(BlueprintCallable, Category = "PRItem")
+
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Base")
 	UPRGunBases* GenerateGunBase(int rarity);
-	UPRGunBases* RerollGunBase();
-	UFUNCTION(BlueprintCallable, Category = "PRItem")
+
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Reroll Base")
+	void RerollGunBase();
+
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Item")
 	UPRGunParts* GenerateGunParts(int rarity);
-	UPRGunParts* RerollGunParts();
+
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Reroll Parts")
+	void RerollGunParts();
 
 private:
 	//void PostEditChangeProperty(struct FPropertyChangedEvent& event) override;

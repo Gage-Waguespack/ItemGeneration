@@ -46,14 +46,10 @@ UPRGunBases* UPRItem::GenerateGunBase(int rarity)
 	return nullptr;
 }
 
-UPRGunBases* UPRItem::RerollGunBase()
+void UPRItem::RerollGunBase()
 {
-	//First I need to call GenerateGunBase
-
-	//The I need to set the current base to be the new generated base.
-
-	//Finally I return the new current base
-	return nullptr;
+	//Call GenerateGunBase
+	//GenerateGunBase();
 }
 
 UPRGunParts* UPRItem::GenerateGunParts(int rarity)
@@ -70,14 +66,9 @@ UPRGunParts* UPRItem::GenerateGunParts(int rarity)
 	return nullptr;
 }
 
-UPRGunParts* UPRItem::RerollGunParts()
+void UPRItem::RerollGunParts()
 {
-	//First I need to call GenerateGunParts
-
-	//The I need to set the current parts to be the new generated parts.
-
-	//Finally I return the new current parts
-	return nullptr;
+	//Call GenerateGunParts
 }
 
 //#if WITH_EDITOR

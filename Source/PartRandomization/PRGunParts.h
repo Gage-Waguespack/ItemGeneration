@@ -104,12 +104,12 @@ class PARTRANDOMIZATION_API UPRGunParts : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts", meta = (AllowPrivateAccess = "true", TitleProperty = "Name"))
 		TArray<FPRBarrels> Barrels;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts", meta = (AllowPrivateAccess = "true", TitleProperty = "Name"))
 		TArray<FPRUnderBarrels> UnderBarrels;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts", meta = (AllowPrivateAccess = "true", TitleProperty = "Name"))
 		TArray<FPRMagazines> Mags;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Gun Parts", meta = (AllowPrivateAccess = "true", TitleProperty = "Name"))
 		TArray<FPRStocks> Stocks;
 };

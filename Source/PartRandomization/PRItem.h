@@ -8,14 +8,14 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Containers/Array.h"
 
 #include "PRGunBases.h"
 #include "PRGunParts.h"
 
 #include "PRItem.generated.h"
 
-
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class PARTRANDOMIZATION_API UPRItem : public UActorComponent
 {
 	GENERATED_BODY()
@@ -33,14 +33,21 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
-	UBlueprint* currentBase;
+	UPROPERTY(EditAnywhere)
 	UPRGunBases* GunBases;
+	UPRGunBases* DAGunBases;
 	UPRGunParts* GunParts;
+	TArray<FPRGunBase> CurrentGunBases;
+	TArray<FPRBarrels> CurrentGunBarrels;
+	TArray<FPRUnderBarrels> CurrentGunUnderBarrels;
+	TArray<FPRMagazines> CurrentGunMagazines;
+	TArray<FPRStocks> CurrentGunStocks;
+
 
 public:
 
 	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Base")
-	UPRGunBases* GenerateGunBase(int rarity);
+	FPRGunBase GenerateGunBase(int rarity);
 
 	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Reroll Base")
 	void RerollGunBase();

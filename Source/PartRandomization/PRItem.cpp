@@ -32,24 +32,35 @@ void UPRItem::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponen
 	// ...
 }
 
-UPRGunBases* UPRItem::GenerateGunBase(int rarity)
+FPRGunBase UPRItem::GenerateGunBase(int rarity)
 {
+	CurrentGunBases.Empty();
+	//UE_LOG(LogTemp, Log, TEXT("%s"))
 	//First I need to get the array of GunBases from the scriptable Object in Unreal
+	for (int i = 0; i < GunBases->Bases.Num(); i++)
+	{
+		if (GunBases->Bases[i].Rarity == rarity)
+		{
+			CurrentGunBases.Add(GunBases->Bases[i]);
+		}
+	}
 
-	//Then I need to get the loot pool of the the base
+	int ArrayLength = CurrentGunBases.Num();
 
-	//After this I need to grab a base with this loot pool
+	//Generate a random number
+	int RandomGunBase = rand() % ArrayLength;
 
-	//Once I find this base, I need to set it as the current base
-
-	//Next, just simply return the current base
-	return nullptr;
+	//Next, just simply return a random base
+	return CurrentGunBases[RandomGunBase];
 }
 
 void UPRItem::RerollGunBase()
 {
+	//Generate a random rarity between 1 and 4
+	int RandomRarity = rand() % 4 + 1;
+
 	//Call GenerateGunBase
-	//GenerateGunBase();
+	GenerateGunBase(RandomRarity);
 }
 
 UPRGunParts* UPRItem::GenerateGunParts(int rarity)
@@ -71,6 +82,7 @@ void UPRItem::RerollGunParts()
 	//Call GenerateGunParts
 }
 
+//This is the function that will hold information on the button to reroll GunBase or GunParts
 //#if WITH_EDITOR
 //void UPRItem::PostEditChangeProperty(FPropertyChangedEvent& event)
 //{

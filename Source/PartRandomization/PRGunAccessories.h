@@ -7,32 +7,28 @@
 #include "Engine/DataAsset.h"
 #include "Containers/Array.h"
 
-#include "PRGunBases.generated.h"
+#include "PRGunAccessories.generated.h"
 
 USTRUCT(BlueprintType)
-struct FPRGunBase
+struct FPRGunAccessory
 {
 	GENERATED_USTRUCT_BODY()
 
 public:
-	FPRGunBase() {}
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FString Name = "";
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int Rarity = 0;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		UMeshComponent* Mesh;
 };
 
 UCLASS()
-class PARTRANDOMIZATION_API UPRGunBases : public UDataAsset
+class PARTRANDOMIZATION_API UPRGunAccessories : public UDataAsset
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Bases", meta = (AllowPrivateAccess = "true", TitleProperty = "Name"))
-		TArray<FPRGunBase> Bases;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Accessories", meta = (AllowPrivateAccess = "true", TitleProperty = "Name"))
+		TArray<FPRGunAccessory> Accessories;
 };

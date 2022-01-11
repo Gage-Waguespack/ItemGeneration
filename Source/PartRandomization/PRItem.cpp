@@ -34,20 +34,24 @@ void UPRItem::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponen
 
 void UPRItem::GenerateGunBase()
 {
+	//Sets the CurrentGunBases array to empty to reset it every time this function is used
 	CurrentGunBases.Empty();
 
 	//Generate a random rarity between 1 and 4
 	int RandomRarity = rand() % 4 + 1;
 
-	//First I need to get the array of GunBases from the scriptable Object in Unreal
+	//Step through all of the bases
 	for (int i = 0; i < GunBases->Bases.Num(); i++)
 	{
+		//Check if the bases rarity equals the random rarity
 		if (GunBases->Bases[i].Rarity == RandomRarity)
 		{
+			//Add the bases with the same rarity to a separate array
 			CurrentGunBases.Add(GunBases->Bases[i]);
 		}
 	}
 
+	//Set the array length to be the length of the current array
 	int ArrayLength = CurrentGunBases.Num();
 
 	//Generate a random number
@@ -59,6 +63,7 @@ void UPRItem::GenerateGunBase()
 
 void UPRItem::GenerateGunParts()
 {
+	//Generate all of the gun parts by setting them all in this function
 	FinalGunBarrel = GenerateGunBarrel();
 	FinalGunUnderBarrel = GenerateGunUnderBarrel();
 	FinalGunMagazine = GenerateGunMag();
@@ -67,134 +72,145 @@ void UPRItem::GenerateGunParts()
 
 FPRBarrels UPRItem::GenerateGunBarrel()
 {
+	//Sets the CurrentGunBarrels array to empty to reset it every time this function is used
 	CurrentGunBarrels.Empty();
 
 	//Generate a random rarity between 1 and 4
 	int RandomRarity = rand() % 4 + 1;
 
+	//Step through all of the barrels
 	for (int i = 0; i < GunParts->Barrels.Num(); i++)
 	{
+		//Check if the barrels rarity equals the random rarity
 		if (GunParts->Barrels[i].Rarity == RandomRarity)
 		{
+			//Add the barrels with the same rarity to a separate array
 			CurrentGunBarrels.Add(GunParts->Barrels[i]);
 		}
 	}
 
+	//Set the array length to be the length of the current array
 	int BarrelArrayLength = CurrentGunBarrels.Num();
 
+	//Generate a random number
 	int RandomGunBarrel = rand() % BarrelArrayLength;
 
+	//Next, just simply return a random barrel
 	return CurrentGunBarrels[RandomGunBarrel];
 }
 
 FPRUnderBarrels UPRItem::GenerateGunUnderBarrel()
 {
+	//Sets the CurrentGunUnderBarrels array to empty to reset it every time this function is used
 	CurrentGunUnderBarrels.Empty();
 
 	//Generate a random rarity between 1 and 4
 	int RandomRarity = rand() % 4 + 1;
 
-	//UnderBarrels
+	//Step through all of the underbarrels
 	for (int i = 0; i < GunParts->UnderBarrels.Num(); i++)
 	{
+		//Check if the underbarrels rarity equals the random rarity
 		if (GunParts->UnderBarrels[i].Rarity == RandomRarity)
 		{
+			//Add the underbarrels with the same rarity to a separate rarity
 			CurrentGunUnderBarrels.Add(GunParts->UnderBarrels[i]);
 		}
 	}
 
+	//Set the array length to be the length of the current array
 	int UnderBarrelArrayLength = CurrentGunUnderBarrels.Num();
 
+	//Generate a random number
 	int RandomGunUnderBarrel = rand() % UnderBarrelArrayLength;
 
+	//Return a random underbarrel
 	return CurrentGunUnderBarrels[RandomGunUnderBarrel];
 }
 
 FPRMagazines UPRItem::GenerateGunMag()
 {
+	//Sets the CurrentGunMagazines array to empty to reset it every time this function is used
 	CurrentGunMagazines.Empty();
 
 	//Generate a random rarity between 1 and 4
 	int RandomRarity = rand() % 4 + 1;
 
-	//Magazines
+	//Step through all of the mags
 	for (int i = 0; i < GunParts->Mags.Num(); i++)
 	{
+		//Check if the mags rarity equals the random rarity
 		if (GunParts->Mags[i].Rarity == RandomRarity)
 		{
+			//Add the mags with the same rarity to a separate array
 			CurrentGunMagazines.Add(GunParts->Mags[i]);
 		}
 	}
 
+	//Set the array length to be the length of the current array
 	int MagArrayLength = CurrentGunMagazines.Num();
 
+	//Generate a random number
 	int RandomGunMag = rand() % MagArrayLength;
 
+	//Return a random mag
 	return CurrentGunMagazines[RandomGunMag];
 }
 
 FPRStocks UPRItem::GenerateGunStock()
 {
+	//Sets the CurrentGunStocks array to empty to reset it every time this function is used
 	CurrentGunStocks.Empty();
 
 	//Generate a random rarity between 1 and 4
 	int RandomRarity = rand() % 4 + 1;
 
+	//Step through all of the stocks
 	for (int i = 0; i < GunParts->Stocks.Num(); i++)
 	{
+		//Check if the stocks' rarity equals the random rarity
 		if (GunParts->Stocks[i].Rarity == RandomRarity)
 		{
+			//Add the stocks with the same rarity to a separate array
 			CurrentGunStocks.Add(GunParts->Stocks[i]);
 		}
 	}
 
+	//Set the array length to be the length of the current array
 	int StockArrayLength = CurrentGunStocks.Num();
 
+	//Generate a random number
 	int RandomGunStock = rand() % StockArrayLength;
 
+	//Return a random stock
 	return CurrentGunStocks[RandomGunStock];
 }
 
 void UPRItem::GenerateGunAccessories()
 {
+	//Sets the CurrentGunAccessories array to empty to reset it every time this function is used
 	CurrentGunAccessories.Empty();
 
 	//Generate a random rarity between 1 and 4
 	int RandomRarity = rand() % 4 + 1;
 
+	//Step through all of the bases
 	for (int i = 0; i < GunAccessories->Accessories.Num(); i++)
 	{
+		//Check if the accessories rarity equals the random rarity
 		if (GunAccessories->Accessories[i].Rarity == RandomRarity)
 		{
+			//Add the accessories with the same rarity to a separate array
 			CurrentGunAccessories.Add(GunAccessories->Accessories[i]);
 		}
 	}
 
+	//Set the array length to be the length of the current array
 	int ArrayLength = CurrentGunAccessories.Num();
 
+	//Generate a random number
 	int RandomAccessory = rand() % ArrayLength;
 
+	//Return a random base
 	FinalGunAccessory = CurrentGunAccessories[RandomAccessory];
 }
-
-//This is the function that will hold information on the button to reroll GunBase or GunParts
-//#if WITH_EDITOR
-//void UPRItem::PostEditChangeProperty(FPropertyChangedEvent& event)
-//{
-//	FName propertyName = (event.MemberProperty != NULL) ? event.MemberProperty->GetFName() : NAME_None;
-//	if (propertyName == GET_MEMBER_NAME_CHECKED(UPRItem, "Variable"))
-//	{
-//		"Function";
-//	}
-//	else if (propertyName == GET_MEMBER_NAME_CHECKED("Class", "Variable"))
-//	{
-//		"Function";
-//	}
-//	else if (propertyName == GET_MEMBER_NAME_CHECKED("Class", "Variable"))
-//	{
-//		"Function";
-//	}
-//
-//	Super::PostEditChangeProperty(event);
-//}
-//#endif

@@ -86,8 +86,4 @@ public:
 
 	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Accessories")
 	void GenerateGunAccessories();
-
-private:
-	//void PostEditChangeProperty(struct FPropertyChangedEvent& event) override;
-
 };

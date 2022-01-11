@@ -13,6 +13,7 @@
 #include "PRGunBases.h"
 #include "PRGunParts.h"
 #include "PRGunAccessories.h"
+#include "LootPool.h"
 
 #include "PRItem.generated.h"
 
@@ -34,6 +35,8 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
+	enum rarity { common = 1, rare, legendary, exotic };
+
 	UPROPERTY(EditAnywhere)
 	UPRGunBases* GunBases;
 
@@ -70,14 +73,22 @@ public:
 	TArray<FPRStocks> CurrentGunStocks;
 	TArray<FPRGunAccessory> CurrentGunAccessories;
 
-
 public:
+	int RandomRarity();
 
 	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Base")
 	void GenerateGunBase();
 
 	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
 	void GenerateGunParts();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
+	void RerollGunBarrel();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
+	void RerollGunUnderBarrel();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
+	void RerollGunMag();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
+	void RerollGunStock();
 
 	FPRBarrels GenerateGunBarrel();
 	FPRUnderBarrels GenerateGunUnderBarrel();

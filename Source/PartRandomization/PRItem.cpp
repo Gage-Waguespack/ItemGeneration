@@ -32,19 +32,45 @@ void UPRItem::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponen
 	// ...
 }
 
+int UPRItem::RandomRarity()
+{
+	int CurrentRarity = 0;
+
+	int randomNum = rand() % 100 + 1;
+
+	if (randomNum <= 5)
+	{
+		return 4;
+	}
+	else if (randomNum <= 25)
+	{
+		return 3;
+	}
+	else if (randomNum <= 50)
+	{
+		return 2;
+	}
+	else if (randomNum <= 100)
+	{
+		return 1;
+	}
+
+	return 5;
+}
+
 void UPRItem::GenerateGunBase()
 {
 	//Sets the CurrentGunBases array to empty to reset it every time this function is used
 	CurrentGunBases.Empty();
 
 	//Generate a random rarity between 1 and 4
-	int RandomRarity = rand() % 4 + 1;
+	int RandRarity = RandomRarity();
 
 	//Step through all of the bases
 	for (int i = 0; i < GunBases->Bases.Num(); i++)
 	{
 		//Check if the bases rarity equals the random rarity
-		if (GunBases->Bases[i].Rarity == RandomRarity)
+		if (GunBases->Bases[i].Rarity == RandRarity)
 		{
 			//Add the bases with the same rarity to a separate array
 			CurrentGunBases.Add(GunBases->Bases[i]);
@@ -70,19 +96,39 @@ void UPRItem::GenerateGunParts()
 	FinalGunStock = GenerateGunStock();
 }
 
+void UPRItem::RerollGunBarrel()
+{
+	FinalGunBarrel = GenerateGunBarrel();
+}
+
+void UPRItem::RerollGunUnderBarrel()
+{
+	FinalGunUnderBarrel = GenerateGunUnderBarrel();
+}
+
+void UPRItem::RerollGunMag()
+{
+	FinalGunMagazine = GenerateGunMag();
+}
+
+void UPRItem::RerollGunStock()
+{
+	FinalGunStock = GenerateGunStock();
+}
+
 FPRBarrels UPRItem::GenerateGunBarrel()
 {
 	//Sets the CurrentGunBarrels array to empty to reset it every time this function is used
 	CurrentGunBarrels.Empty();
 
 	//Generate a random rarity between 1 and 4
-	int RandomRarity = rand() % 4 + 1;
+	int RandRarity = RandomRarity();
 
 	//Step through all of the barrels
 	for (int i = 0; i < GunParts->Barrels.Num(); i++)
 	{
 		//Check if the barrels rarity equals the random rarity
-		if (GunParts->Barrels[i].Rarity == RandomRarity)
+		if (GunParts->Barrels[i].Rarity == RandRarity)
 		{
 			//Add the barrels with the same rarity to a separate array
 			CurrentGunBarrels.Add(GunParts->Barrels[i]);
@@ -105,13 +151,13 @@ FPRUnderBarrels UPRItem::GenerateGunUnderBarrel()
 	CurrentGunUnderBarrels.Empty();
 
 	//Generate a random rarity between 1 and 4
-	int RandomRarity = rand() % 4 + 1;
+	int RandRarity = RandomRarity();
 
 	//Step through all of the underbarrels
 	for (int i = 0; i < GunParts->UnderBarrels.Num(); i++)
 	{
 		//Check if the underbarrels rarity equals the random rarity
-		if (GunParts->UnderBarrels[i].Rarity == RandomRarity)
+		if (GunParts->UnderBarrels[i].Rarity == RandRarity)
 		{
 			//Add the underbarrels with the same rarity to a separate rarity
 			CurrentGunUnderBarrels.Add(GunParts->UnderBarrels[i]);
@@ -134,13 +180,13 @@ FPRMagazines UPRItem::GenerateGunMag()
 	CurrentGunMagazines.Empty();
 
 	//Generate a random rarity between 1 and 4
-	int RandomRarity = rand() % 4 + 1;
+	int RandRarity = RandomRarity();
 
 	//Step through all of the mags
 	for (int i = 0; i < GunParts->Mags.Num(); i++)
 	{
 		//Check if the mags rarity equals the random rarity
-		if (GunParts->Mags[i].Rarity == RandomRarity)
+		if (GunParts->Mags[i].Rarity == RandRarity)
 		{
 			//Add the mags with the same rarity to a separate array
 			CurrentGunMagazines.Add(GunParts->Mags[i]);
@@ -192,13 +238,13 @@ void UPRItem::GenerateGunAccessories()
 	CurrentGunAccessories.Empty();
 
 	//Generate a random rarity between 1 and 4
-	int RandomRarity = rand() % 4 + 1;
+	int RandRarity = RandomRarity();
 
 	//Step through all of the bases
 	for (int i = 0; i < GunAccessories->Accessories.Num(); i++)
 	{
 		//Check if the accessories rarity equals the random rarity
-		if (GunAccessories->Accessories[i].Rarity == RandomRarity)
+		if (GunAccessories->Accessories[i].Rarity == RandRarity)
 		{
 			//Add the accessories with the same rarity to a separate array
 			CurrentGunAccessories.Add(GunAccessories->Accessories[i]);

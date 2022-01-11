@@ -12,6 +12,7 @@
 
 #include "PRGunBases.h"
 #include "PRGunParts.h"
+#include "PRGunAccessories.h"
 
 #include "PRItem.generated.h"
 
@@ -35,28 +36,56 @@ public:
 public:
 	UPROPERTY(EditAnywhere)
 	UPRGunBases* GunBases;
-	UPRGunBases* DAGunBases;
+
+	UPROPERTY(VisibleAnywhere)
+	FPRGunBase FinalGunBase;
+
+	UPROPERTY(VisibleAnywhere)
+	FPRBarrels FinalGunBarrel;
+
+	UPROPERTY(VisibleAnywhere)
+	FPRUnderBarrels FinalGunUnderBarrel;
+
+	UPROPERTY(VisibleAnywhere)
+	FPRMagazines FinalGunMagazine;
+
+	UPROPERTY(VisibleAnywhere)
+	FPRStocks FinalGunStock;
+
+	UPROPERTY(VisibleAnywhere)
+	FPRGunAccessory FinalGunAccessory;
+
+	UPROPERTY(EditAnywhere)
 	UPRGunParts* GunParts;
+
+	UPROPERTY(EditAnywhere)
+	UPRGunAccessories* GunAccessories;
+
+	UPRGunBases* DAGunBases;
+
 	TArray<FPRGunBase> CurrentGunBases;
 	TArray<FPRBarrels> CurrentGunBarrels;
 	TArray<FPRUnderBarrels> CurrentGunUnderBarrels;
 	TArray<FPRMagazines> CurrentGunMagazines;
 	TArray<FPRStocks> CurrentGunStocks;
+	TArray<FPRGunAccessory> CurrentGunAccessories;
 
 
 public:
 
 	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Base")
-	FPRGunBase GenerateGunBase(int rarity);
+	void GenerateGunBase();
 
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Reroll Base")
-	void RerollGunBase();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
+	void GenerateGunParts();
 
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Item")
-	UPRGunParts* GenerateGunParts(int rarity);
+	FPRBarrels GenerateGunBarrel();
+	FPRUnderBarrels GenerateGunUnderBarrel();
+	FPRMagazines GenerateGunMag();
+	FPRStocks GenerateGunStock();
 
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Reroll Parts")
-	void RerollGunParts();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Accessories")
+	void GenerateGunAccessories();
 
 private:
 	//void PostEditChangeProperty(struct FPropertyChangedEvent& event) override;

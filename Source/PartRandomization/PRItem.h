@@ -10,19 +10,18 @@
 #include "Components/ActorComponent.h"
 #include "Containers/Array.h"
 
-#include "PRGunBases.h"
+#include "PRBases.h"
 #include "PRGunParts.h"
 #include "PRGunAccessories.h"
-#include "LootPool.h"
 
 #include "PRItem.generated.h"
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class PARTRANDOMIZATION_API UPRItem : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
 	UPRItem();
 
@@ -30,43 +29,40 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
-	enum rarity { common = 1, rare, legendary, exotic };
 
-	UPROPERTY(EditAnywhere)
-	UPRGunBases* GunBases;
+	UPROPERTY(EditAnywhere, category = "PR Scriptable Objects")
+		UPRBases* GunBases;
 
-	UPROPERTY(VisibleAnywhere)
-	FPRGunBase FinalGunBase;
+	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+		FPRBase FinalGunBase;
 
-	UPROPERTY(VisibleAnywhere)
-	FPRBarrels FinalGunBarrel;
+	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+		FPRBarrels FinalGunBarrel;
 
-	UPROPERTY(VisibleAnywhere)
-	FPRUnderBarrels FinalGunUnderBarrel;
+	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+		FPRUnderBarrels FinalGunUnderBarrel;
 
-	UPROPERTY(VisibleAnywhere)
-	FPRMagazines FinalGunMagazine;
+	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+		FPRMagazines FinalGunMagazine;
 
-	UPROPERTY(VisibleAnywhere)
-	FPRStocks FinalGunStock;
+	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+		FPRStocks FinalGunStock;
 
-	UPROPERTY(VisibleAnywhere)
-	FPRGunAccessory FinalGunAccessory;
+	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+		FPRGunAccessory FinalGunAccessory;
 
-	UPROPERTY(EditAnywhere)
-	UPRGunParts* GunParts;
+	UPROPERTY(EditAnywhere, category = "PR Scriptable Objects")
+		UPRGunParts* GunParts;
 
-	UPROPERTY(EditAnywhere)
-	UPRGunAccessories* GunAccessories;
+	UPROPERTY(EditAnywhere, category = "PR Scriptable Objects")
+		UPRGunAccessories* GunAccessories;
 
-	UPRGunBases* DAGunBases;
-
-	TArray<FPRGunBase> CurrentGunBases;
+	TArray<FPRBase> CurrentGunBases;
 	TArray<FPRBarrels> CurrentGunBarrels;
 	TArray<FPRUnderBarrels> CurrentGunUnderBarrels;
 	TArray<FPRMagazines> CurrentGunMagazines;
@@ -76,25 +72,28 @@ public:
 public:
 	int RandomRarity();
 
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Base")
-	void GenerateGunBase();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun All Generation")
+		void GenerateGun();
 
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
-	void GenerateGunParts();
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
-	void RerollGunBarrel();
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
-	void RerollGunUnderBarrel();
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
-	void RerollGunMag();
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Parts")
-	void RerollGunStock();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Generate Base")
+		void GenerateGunBase();
+
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Generate Parts")
+		void GenerateGunParts();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Generate Parts")
+		void RerollGunBarrel();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Generate Parts")
+		void RerollGunUnderBarrel();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Generate Parts")
+		void RerollGunMag();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Generate Parts")
+		void RerollGunStock();
 
 	FPRBarrels GenerateGunBarrel();
 	FPRUnderBarrels GenerateGunUnderBarrel();
 	FPRMagazines GenerateGunMag();
 	FPRStocks GenerateGunStock();
 
-	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Accessories")
-	void GenerateGunAccessories();
+	UFUNCTION(CallInEditor, BlueprintCallable, category = "PR Gun Generate Accessories")
+		void GenerateGunAccessory();
 };

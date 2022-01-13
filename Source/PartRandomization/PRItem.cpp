@@ -58,6 +58,13 @@ int UPRItem::RandomRarity()
 	return 5;
 }
 
+void UPRItem::GenerateGun()
+{
+	GenerateGunBase();
+	GenerateGunParts();
+	GenerateGunAccessory();
+}
+
 void UPRItem::GenerateGunBase()
 {
 	//Sets the CurrentGunBases array to empty to reset it every time this function is used
@@ -232,7 +239,7 @@ FPRStocks UPRItem::GenerateGunStock()
 	return CurrentGunStocks[RandomGunStock];
 }
 
-void UPRItem::GenerateGunAccessories()
+void UPRItem::GenerateGunAccessory()
 {
 	//Sets the CurrentGunAccessories array to empty to reset it every time this function is used
 	CurrentGunAccessories.Empty();

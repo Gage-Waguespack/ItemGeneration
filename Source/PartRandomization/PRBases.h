@@ -7,15 +7,15 @@
 #include "Engine/DataAsset.h"
 #include "Containers/Array.h"
 
-#include "PRGunBases.generated.h"
+#include "PRBases.generated.h"
 
 USTRUCT(BlueprintType)
-struct FPRGunBase
+struct FPRBase
 {
 	GENERATED_USTRUCT_BODY()
 
 public:
-	FPRGunBase() {}
+	FPRBase() {}
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FString Name = "";
@@ -28,11 +28,11 @@ public:
 };
 
 UCLASS()
-class PARTRANDOMIZATION_API UPRGunBases : public UDataAsset
+class PARTRANDOMIZATION_API UPRBases : public UDataAsset
 {
 	GENERATED_BODY()
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "PR Bases", meta = (AllowPrivateAccess = "true", TitleProperty = "Name"))
-		TArray<FPRGunBase> Bases;
+		TArray<FPRBase> Bases;
 };

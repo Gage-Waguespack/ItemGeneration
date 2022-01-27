@@ -64,7 +64,6 @@ void UPRItem::GenerateGun()
 	GenerateGunParts();
 	GenerateGunAccessory();
 }
-
 void UPRItem::GenerateGunBase()
 {
 	//Sets the CurrentGunBases array to empty to reset it every time this function is used

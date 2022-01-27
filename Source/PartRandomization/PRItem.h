@@ -61,13 +61,18 @@ public:
 
 	UPROPERTY(EditAnywhere, category = "PR Scriptable Objects")
 		UPRGunAccessories* GunAccessories;
-
-	TArray<FPRBase> CurrentGunBases;
-	TArray<FPRBarrels> CurrentGunBarrels;
-	TArray<FPRUnderBarrels> CurrentGunUnderBarrels;
-	TArray<FPRMagazines> CurrentGunMagazines;
-	TArray<FPRStocks> CurrentGunStocks;
-	TArray<FPRGunAccessory> CurrentGunAccessories;
+	UPROPERTY(BlueprintReadOnly)
+		TArray<FPRBase> CurrentGunBases;
+	UPROPERTY(BlueprintReadOnly)
+		TArray<FPRBarrels> CurrentGunBarrels;
+	UPROPERTY(BlueprintReadOnly)
+		TArray<FPRUnderBarrels> CurrentGunUnderBarrels;
+	UPROPERTY(BlueprintReadOnly)
+		TArray<FPRMagazines> CurrentGunMagazines;
+	UPROPERTY(BlueprintReadOnly)
+		TArray<FPRStocks> CurrentGunStocks;
+	UPROPERTY(BlueprintReadOnly)
+		TArray<FPRGunAccessory> CurrentGunAccessories;
 
 public:
 	int RandomRarity();

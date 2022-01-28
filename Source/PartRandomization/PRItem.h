@@ -38,22 +38,22 @@ public:
 	UPROPERTY(EditAnywhere, category = "PR Scriptable Objects")
 		UPRBases* GunBases;
 
-	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, category = "PR Current Gun Selections")
 		FPRBase FinalGunBase;
 
-	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, category = "PR Current Gun Selections")
 		FPRBarrels FinalGunBarrel;
 
-	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, category = "PR Current Gun Selections")
 		FPRUnderBarrels FinalGunUnderBarrel;
 
-	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, category = "PR Current Gun Selections")
 		FPRMagazines FinalGunMagazine;
 
-	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, category = "PR Current Gun Selections")
 		FPRStocks FinalGunStock;
 
-	UPROPERTY(VisibleAnywhere, category = "PR Current Gun Selections")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, category = "PR Current Gun Selections")
 		FPRGunAccessory FinalGunAccessory;
 
 	UPROPERTY(EditAnywhere, category = "PR Scriptable Objects")
@@ -61,6 +61,7 @@ public:
 
 	UPROPERTY(EditAnywhere, category = "PR Scriptable Objects")
 		UPRGunAccessories* GunAccessories;
+
 	UPROPERTY(BlueprintReadOnly)
 		TArray<FPRBase> CurrentGunBases;
 	UPROPERTY(BlueprintReadOnly)
